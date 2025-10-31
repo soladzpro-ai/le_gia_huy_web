@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Đếm ngược Tết 2026</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script>
+    function countdown() {
+      const end = new Date("Feb 17, 2026 00:00:00").getTime();
+      const now = new Date().getTime();
+      const diff = end - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "🎉 Chúc mừng năm mới 2026!";
+      }
+    }
+    setInterval(countdown, 1000);
+  </script>
+</head>
+<body style="background: radial-gradient(circle at top, #7f59c6, #3fd9ff);">
+  <a href="/" class="back-btn">⬅ Trở lại</a>
+  <h1>Đếm ngược đến Tết Nguyên Đán 2026</h1>
+  <div id="countdown"></div>
+</body>
+</html>
