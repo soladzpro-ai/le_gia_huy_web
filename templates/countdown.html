@@ -4,30 +4,38 @@
   <meta charset="UTF-8">
   <title>Đếm ngược Tết 2026</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
   <script>
     function countdown() {
       const end = new Date("Feb 06, 2027 00:00:00").getTime();
       const now = new Date().getTime();
       const diff = end - now;
 
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-      document.getElementById("countdown").innerHTML =
-        `${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
-
-      if (diff <= 0) {
-        document.getElementById("countdown").innerHTML = "🎉 Chúc mừng năm mới 2026!";
+        document.getElementById("countdown").innerHTML =
+          `${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
+      } else {
+        // Khi đếm về 0 -> chuyển trang
+        window.location.href = "/fireworks";
       }
     }
+
+    // Cập nhật mỗi giây
     setInterval(countdown, 1000);
+
+    // Chạy ngay khi load trang
+    window.onload = countdown;
   </script>
 </head>
+
 <body style="background: radial-gradient(circle at top, #7f59c6, #3fd9ff);">
   <a href="/" class="back-btn">⬅ Trở lại</a>
   <h1>Đếm ngược đến Tết Nguyên Đán 2026</h1>
-  <div id="countdown"></div>
+  <div id="countdown" style="font-size: 28px; margin-top: 20px;"></div>
 </body>
 </html>

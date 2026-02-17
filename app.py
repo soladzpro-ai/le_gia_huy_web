@@ -26,5 +26,10 @@ def hobby():
 def countdown():
     return render_template('countdown.html')
 
+@app.route("/fireworks")
+def fireworks():
+    return render_template("fireworks.html")
+
+
 if __name__ == '__main__':
     app.run(debug=True)
