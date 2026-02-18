@@ -1,64 +1,7 @@
-/* ==== CSS RGB GAMING STYLE MƯỢT DỊU ==== */
+/* ===================================================== */
+/* ================= HIỆU ỨNG RGB ======================= */
+/* ===================================================== */
 
-body {
-  font-family: 'Times New Roman', sans-serif;
-  background: radial-gradient(circle at center, #0f0f0f 0%, #000 100%);
-  color: white;
-  text-align: center;
-  height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ==== KHUNG NÚT ==== */
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-/* ==== NÚT RGB MƯỢT DỊU KIỂU GAMING ==== */
-button, .countdown-btn, .back-btn {
-  position: relative;
-  padding: 14px 30px;
-  border: none;
-  color: white;
-  font-weight: 600;
-  font-family: 'Times New Roman', Times, serif;
-  border-radius: 14px;
-  cursor: pointer;
-  background: hsl(0, 80%, 45%);
-  animation: rgbflow 20s linear infinite;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 0 10px hsl(0, 80%, 40%);
-}
-
-/* ==== ÁNH SÁNG MỀM VÀ “THỞ” ==== */
-button::before, .countdown-btn::before, .back-btn::before {
-  content: "";
-  position: absolute;
-  top: -4px; left: -4px; right: -4px; bottom: -4px;
-  border-radius: 16px;
-  z-index: -1;
-  background: inherit;
-  filter: blur(10px);
-  opacity: 0.25; /* ánh sáng nhẹ, không chói */
-  transition: opacity 0.5s ease-in-out;
-}
-
-/* ==== HOVER: NHẤN NHẸ ==== */
-button:hover, .countdown-btn:hover, .back-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 18px hsl(0, 90%, 55%);
-}
-
-/* ==== RGB MƯỢT DỊU KIỂU LED ==== */
 @keyframes rgbflow {
   0%   { background: hsl(0, 70%, 45%); box-shadow: 0 0 10px hsl(0, 70%, 35%); }
   20%  { background: hsl(60, 70%, 45%); box-shadow: 0 0 10px hsl(60, 70%, 35%); }
@@ -68,24 +11,119 @@ button:hover, .countdown-btn:hover, .back-btn:hover {
   100% { background: hsl(360, 70%, 45%); box-shadow: 0 0 10px hsl(360, 70%, 35%); }
 }
 
-/* ==== NÚT GÓC ==== */
-.countdown-btn, .back-btn {
+/* ===================================================== */
+/* ================= INDEX PAGE ========================= */
+/* ===================================================== */
+
+body:has(.countdown-btn) {
+  font-family: 'Times New Roman', serif;
+  background: radial-gradient(circle at top, #18c2f1, #ea48ed);
+  color: white;
+  margin: 0;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+/* 4 nút giữa màn hình */
+body:has(.countdown-btn) .container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Nút chung */
+button,
+.countdown-btn,
+.count-btn,
+.back-btn {
+  padding: 14px 30px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: 'Times New Roman', serif;
+  color: white;
+  text-decoration: none;
+  background: hsl(0, 70%, 45%);
+  animation: rgbflow 20s linear infinite;
+  transition: 0.3s ease;
+  box-shadow: 0 0 10px hsl(0, 70%, 35%);
+}
+
+button:hover,
+.countdown-btn:hover,
+.count-btn:hover,
+.back-btn:hover {
+  transform: scale(1.05);
+}
+
+/* Nút góc phải */
+.countdown-btn {
   position: absolute;
   top: 20px;
-  right: 25px;
-  text-decoration: none;
-  padding: 12px 20px;
+  right: 30px;
 }
 
-/* ==== TEXT ĐẾM NGƯỢC ==== */
+.count-btn {
+  position: absolute;
+  top: 80px;
+  right: 30px;
+}
+
+/* ===================================================== */
+/* ================= SUB PAGES ========================== */
+/* ===================================================== */
+
+body:has(.back-btn) {
+  font-family: 'Times New Roman', serif;
+  background: linear-gradient(135deg, #667eea, #c850c0, #4158d0);
+  color: white;
+  margin: 0;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  position: relative;
+  padding: 40px;
+}
+
+/* Tiêu đề trang con */
+body:has(.back-btn) h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+/* Mỗi dòng nội dung 1 hàng */
+body:has(.back-btn) p,
+body:has(.back-btn) div {
+  display: block;
+  width: 100%;
+  font-size: 1.8rem;
+  margin: 12px 0;
+}
+
+/* Countdown */
 #countdown {
+  display: block;
   font-size: 2rem;
-  margin-top: 20px;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+  margin-top: 25px;
 }
 
-/* ==== NÚT ==== */
-button {
-  min-width: 160px;
-  font-size: 1.1rem;
+/* Nút trở lại */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
 }

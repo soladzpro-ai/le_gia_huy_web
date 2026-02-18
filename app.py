@@ -30,6 +30,13 @@ def countdown():
 def fireworks():
     return render_template("fireworks.html")
 
+@app.route('/count')
+def count():
+    return render_template('count.html')
+
+@app.route("/phaohoa")
+def phaohoa():
+    return render_template("phaohoa.html")
 
 if __name__ == '__main__':
     app.run(debug=True)

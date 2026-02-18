@@ -7,7 +7,7 @@
 
   <script>
     function countdown() {
-      const end = new Date("Feb 06, 2027 00:00:00").getTime();
+      const end = new Date("Feb 17, 2026 00:00:00").getTime();
       const now = new Date().getTime();
       const diff = end - now;
 
@@ -21,7 +21,7 @@
           `${days} ngày ${hours} giờ ${minutes} phút ${seconds} giây`;
       } else {
         // Khi đếm về 0 -> chuyển trang
-        window.location.href = "/fireworks";
+        window.location.href = "/phaohoa";
       }
     }
 
@@ -35,7 +35,7 @@
 
 <body style="background: radial-gradient(circle at top, #7f59c6, #3fd9ff);">
   <a href="/" class="back-btn">⬅ Trở lại</a>
-  <h1>Đếm ngược đến Tết Nguyên Đán 2027</h1>
+  <h1>Đếm ngược đến Tết Nguyên Đán 2026</h1>
   <div id="countdown" style="font-size: 28px; margin-top: 20px;"></div>
 </body>
 </html>
